@@ -19,6 +19,9 @@ What is the sum of all of the calibration values?
 import re
 from pathlib import Path
 
+INPUT_FILE_PATH = Path('./input.txt')
+TEST_FILE_PATH = Path('./test_values_2.txt')
+
 digits_map = {
     'one': 1,
     'two': 2,
@@ -32,7 +35,7 @@ digits_map = {
 }
 
 
-def str_to_int(input_digits: tuple[str, ...]) -> list[int]:
+def str_to_int(input_digits: tuple[str, ...]) -> list[int, int]:
     output_digits = []
     for i, digit in enumerate(input_digits):
         if digit.isdigit():
@@ -44,10 +47,10 @@ def str_to_int(input_digits: tuple[str, ...]) -> list[int]:
     return output_digits
 
 
-def find_digits(line: str):
+def find_digits(line: str) -> list[int, int]:
     # Regex used : https://regex101.com/r/m3acIR/1. Matches all occurrences of digits (str or int)
     m: list[str] = re.findall(r'(?=(one|two|three|four|five|six|seven|eight|nine|\d))', line)
-    print(line, m[0], m[-1])
+
     return str_to_int((m[0], m[-1]))
 
 
@@ -56,10 +59,10 @@ def sum_of_digits_calibration_values_with_spelled_digits(file_path: Path):
         calibration_values = []
         while line := file.readline()[:-1]:
             first, last = find_digits(line)
-            calibration_values.append(int(first + last))
+            calibration_values.append(10 * first + last)
 
         print(f'Sum of calibration values : {sum(calibration_values)}')
 
 
 if __name__ == '__main__':
-    sum_of_digits_calibration_values_with_spelled_digits(file_path=Path('./test_values_2.txt'))
+    sum_of_digits_calibration_values_with_spelled_digits(file_path=INPUT_FILE_PATH)
