@@ -48,7 +48,7 @@ def str_to_int(input_digits: tuple[str, ...]) -> list[int, int]:
 
 
 def find_digits(line: str) -> list[int, int]:
-    # Regex used : https://regex101.com/r/m3acIR/1. Matches all occurrences of digits (str or int)
+    # Regex used : https://regex101.com/r/p3TYiB/2. Matches all occurrences of digits (str or int)
     m: list[str] = re.findall(r'(?=(one|two|three|four|five|six|seven|eight|nine|\d))', line)
 
     return str_to_int((m[0], m[-1]))
