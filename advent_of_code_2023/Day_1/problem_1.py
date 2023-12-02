@@ -13,9 +13,13 @@ In this example, the calibration values of these four lines are 12, 38, 15, and 
 Consider your entire calibration document. What is the sum of all of the calibration values?
 """
 
+from pathlib import Path
 
-def sum_of_digits_calibration_values():
-    with open('./input.txt') as file:
+INPUT_FILE_PATH = Path('./input.txt')
+
+
+def sum_of_digits_calibration_values(file_path: Path):
+    with open(file_path) as file:
         calibration_values = []
         while line := file.readline():
             first = last = ''
@@ -30,4 +34,4 @@ def sum_of_digits_calibration_values():
 
 
 if __name__ == '__main__':
-    sum_of_digits_calibration_values()
+    sum_of_digits_calibration_values(file_path=INPUT_FILE_PATH)
