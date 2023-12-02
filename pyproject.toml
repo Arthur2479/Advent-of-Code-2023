@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "advent-of-code-2023"
+version = "0.1.0"
+description = "My take on solving Advent of Code's 2023 problems"
+authors = ["Arthur2479 <arthurjacobs1004@gmail.com>"]
+readme = "README.md"
+packages = [{include = "advent_of_code_2023"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
